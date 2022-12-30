@@ -1,0 +1,30 @@
+﻿@model EntityLayer.Concrete.Category
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@using (Html.BeginForm("AddCategory","Category",FormMethod.Post)) 
+{
+    <div class="form-group">
+        @Html.Label("Kategori Adı")
+        @Html.TextBoxFor(x=>x.CategoryName)
+        @Html.ValidationMessageFor(x=>x.CategoryName) <!--En az 3 karekter giriniz gibi hata kodunu göstermek için kullanıyoruz.-->
+        <br /><br />
+        @Html.Label("Açıklama")
+        @Html.TextBoxFor(x=>x.CategoryDescription)
+        @Html.ValidationMessageFor(x=>x.CategoryDescription)
+        <br /><br />
+        <button class="btn btn-success">Kaydet</button>
+    </div>
+}
+
+
+<!--<form class="form-group" method="post">-->
+    <!--Post işlemi olduğunda çalışacak-->
+    <!--<input type="text" placeholder="Kategori Adı" name="CategoryName" class="form-control" />--> <!--Tablodaki başlık ile aynı olmak zorunda name="" içine yazılacak olan....-->
+    <!--<br />
+    <input type="text" placeholder="Kategori Açıklama" name="CategoryDescription" class="form-control" />--> <!--Tablodaki başlık ile aynı olmak zorunda name="" içine yazılacak olan....-->
+    <!--<br />
+    <button class="btn btn-primary">Ekle</button>
+</form>-->

@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Title
+@{
+    ViewBag.Title = "AddTitle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Başlık Ekleme Sayfası</h2>
+@using (Html.BeginForm("AddTitle", "Title", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Başlık Adı")
+        @Html.TextBoxFor(x => x.TitleName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.TitleName)
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.valuectgry,new {@class="form-control"})
+        <br />
+        @Html.Label("Yazar")
+        @Html.DropDownListFor(x=>x.WriterID,(List<SelectListItem>)ViewBag.valuewrtr,new {@class="form-control"})
+        <br />
+        <button class="btn btn-info">Başlığı Oluştur</button>
+    </div>
+}
+

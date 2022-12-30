@@ -1,0 +1,24 @@
+﻿@model EntityLayer.Concrete.Title
+@{
+    ViewBag.Title = "EditTitle";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+
+<h2>Başlık Güncelle Sayfası</h2>
+@using (Html.BeginForm("EditTitle", "WriterPanel", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.TitleID)
+        @Html.HiddenFor(x => x.TitleDate)
+        @Html.HiddenFor(x => x.WriterID)
+        <br />
+        @Html.Label("Başlık Adı")
+        @Html.TextBoxFor(x => x.TitleName, new { @class = "form-control" })
+        <br />
+        @Html.Label("Kategori")
+        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.valuectgry, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Güncelle</button>
+    </div>
+}
+

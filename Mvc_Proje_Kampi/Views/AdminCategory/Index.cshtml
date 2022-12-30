@@ -1,0 +1,34 @@
+﻿@using EntityLayer.Concrete
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<br />
+<h3>Kategoriler</h3>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <th>Başlıklar</th>
+    </tr>
+    @foreach (var ctgry in Model)
+    {
+        <tr>
+            <th>@ctgry.CategoryID</th>
+            <td>@ctgry.CategoryName</td>
+            <td><a href="/AdminCategory/DeleteCategory/@ctgry.CategoryID" class="btn btn-danger" id="btnsil">SİL</a></td>
+            <td><a href="/AdminCategory/UpdateCategory/@ctgry.CategoryID" class="btn btn-warning">GÜNCELLE</a></td>
+            <td><a href="#" class="btn btn-primary">Başlıklar</a></td>
+        </tr>
+    }
+</table>
+<br />
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+<a href="/AdminCategory/AddCategory" class="btn btn-success">Yeni Kategori</a>
