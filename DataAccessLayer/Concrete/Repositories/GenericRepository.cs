@@ -25,7 +25,7 @@ namespace DataAccessLayer.Concrete.Repositories
             var deletedEntity=c.Entry(p); //Entity State üzerinden silme işlemi
             deletedEntity.State=EntityState.Deleted;
             //_object.Remove(p);
-            c.SaveChanges();
+            c.SaveChanges();  
         }
         public T Get(Expression<Func<T, bool>> filter)
         {
