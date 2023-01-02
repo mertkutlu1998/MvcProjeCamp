@@ -52,7 +52,8 @@ namespace Mvc_Proje_Kampi.Controllers
             if (writeruserinfo != null)
             {
                 FormsAuthentication.SetAuthCookie(writeruserinfo.WriterMail, false);
-                Session["WriterMail"] = writeruserinfo.WriterMail;
+                Session["WriterName"] = writeruserinfo.WriterName;
+                Session["WriterSurName"] = writeruserinfo.WriterSurName;
                 return RedirectToAction("MyContent", "WriterPanelContent");
             }
             else
